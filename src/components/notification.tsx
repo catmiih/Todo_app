@@ -1,7 +1,13 @@
 import { MdCheck } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
+import { useState } from "react";
 
-export function Notification() {
+interface notifyProps {
+  name: string
+}
+
+export function Notification(props : notifyProps) {
+
   return (
     <div className="flex w-full p-5 items-center justify-between shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-2 bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500">
       <label className="flex items-center justify-between w-full cursor-pointer group">
@@ -13,7 +19,7 @@ export function Notification() {
             name=""
           />
           <MdCheck className="absolute m-2 opacity-0 peer-checked:opacity-100 text-white" />
-          <p className="peer-checked:line-through peer-checked:opacity-25 mx-5">Nome da tarefa</p>
+          <p className="peer-checked:line-through peer-checked:opacity-25 mx-5">{props.name}</p>
         </div>
 
         <button className="opacity-0 group-hover:opacity-100 transition-all duration-500 text-white">
