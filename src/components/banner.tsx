@@ -1,16 +1,20 @@
 import { BsFillSunFill } from 'react-icons/bs';
-import { MdCheck } from "react-icons/md";
+import { BsFillMoonFill } from 'react-icons/bs';
 
 export function Banner() {
     return (
-        <div className='w-screen p-8 lg:p-0 bg-desktop-light bg-cover h-72 lg:h-96 flex flex-wrap justify-center text-white'>
+        <div className='w-screen p-8 lg:p-0 bg-mobile-light dark:bg-mobile-dark lg:bg-desktop-light dark:lg:bg-desktop-dark bg-cover h-72 lg:h-96 flex flex-wrap justify-center text-white transition-all duration-500'>
             <div className='flex w-screen lg:w-2/4 justify-between lg:mt-20 items-center'>
                 <h1 className='text-4xl font-light'>T O D O</h1>
-                <button className='text-2xl'><BsFillSunFill /></button>
+
+                <button id="theme-toggle" className='text-2xl'>
+                    <BsFillMoonFill className='hidden' id="theme-toggle-dark-icon" />
+                    <BsFillSunFill className='hidden' id="theme-toggle-light-icon" />
+                </button>
             </div>
 
-            <div className='w-full flex justify-center items-start text-black'>
-                <div className='flex w-screen lg:w-2/4 p-5 rounded-lg shadow-2xl bg-gray-100'>
+            <div className='w-full flex justify-center items-start text-black dark:text-gray-100 transition-all duration-500'>
+                <div className='flex w-screen items-center lg:w-2/4 p-5 shadow-2xl bg-gray-100 dark:bg-slate-800 transition-all duration-500'>
 
                     <label className="flex items-center">
                         <input
@@ -20,12 +24,12 @@ export function Banner() {
                             name=""
                             disabled
                         />
-                        <MdCheck className="absolute m-2 text-gray-100" />
                     </label>
 
-                    <input className='bg-transparent border-b-2 border-gray-200 focus:ring-0 focus:border-0 shadow-transparent outline-0 w-full mx-3' type="text" name="" id="" />
+                    <input className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-full mx-3' type="text" name="" id="" placeholder='Varrer a casa'/>
                 </div>
             </div>
         </div>
     )
+
 }

@@ -1,9 +1,9 @@
 import { MdCheck } from "react-icons/md";
-import { GrClose } from "react-icons/gr";
+import { CgClose } from "react-icons/cg";
 
 export function Notification() {
   return (
-    <div className="flex w-full p-5 items-center justify-between rounded-lg shadow-2xl bg-gray-100 text-black">
+    <div className="flex w-full p-5 items-center justify-between shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-2 bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500">
       <label className="flex items-center justify-between w-full cursor-pointer group">
         <div className="flex items-center">
           <input
@@ -13,11 +13,11 @@ export function Notification() {
             name=""
           />
           <MdCheck className="absolute m-2 opacity-0 peer-checked:opacity-100 text-white" />
-          <p className="peer-checked:line-through font-semibold peer-checked:opacity-25 text-bold mx-5">Nome da tarefa</p>
+          <p className="peer-checked:line-through peer-checked:opacity-25 mx-5">Nome da tarefa</p>
         </div>
 
-        <button className="opacity-0 group-hover:opacity-50">
-          <GrClose className="text-sm mx-5 hover:scale-105 hover:duration-300 ease-in-out duration-300" />
+        <button className="opacity-0 group-hover:opacity-100 transition-all duration-500 text-white">
+          <CgClose className="text-sm mx-5 hover:scale-105 hover:duration-300 ease-in-out duration-300" />
         </button>
       </label>
     </div>
