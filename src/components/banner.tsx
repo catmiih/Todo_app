@@ -9,8 +9,8 @@ export function Banner() {
                 <button className='text-2xl'><BsFillSunFill /></button>
             </div>
 
-            <div className='w-full flex justify-center items-start'>
-                <div className='flex w-2/4 p-5 rounded-md shadow-2xl bg-gray-100'>
+            <div className='w-full flex justify-center items-start text-indigo-500'>
+                <div className='flex w-2/4 p-5 rounded-lg shadow-2xl bg-gray-100'>
                         <input className='appearance-none text-transparent border-gray-800 border-2 w-8 h-8 rounded-full checked:bg-gradient-to-r from-violet-500 to-fuchsia-500 checked:border-0 checked:text-white' type="checkbox" name="" id="" />
                     <input className='bg-transparent focus:border-b-2 focus:ring-0 focus:border-0 shadow-transparent outline-0 w-full mx-3' type="text" name="" id="" />
                 </div>
