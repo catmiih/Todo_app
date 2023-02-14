@@ -11,7 +11,7 @@ Todo App with drag and drop Challenge from Frontend Mentor
 ### First clone the repository form GitHub:
 
 ```shell
-git clone https://github.com/JoseLuria/todo-app.git
+git clone https://github.com/catmiih/Todo_app.git
 ```
 
 ### Then install the dependencies:
