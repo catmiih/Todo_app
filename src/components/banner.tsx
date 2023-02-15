@@ -4,7 +4,7 @@ import { BsFillMoonFill } from 'react-icons/bs';
 export function Banner() {
 
   return (
-    <div className='w-screen p-8 lg:p-0 bg-mobile-light dark:bg-mobile-dark lg:bg-desktop-light dark:lg:bg-desktop-dark bg-cover h-72 lg:h-96 flex flex-wrap justify-center text-white transition-all duration-500'>
+    <div className='w-screen p-8 lg:p-0 bg-mobile-light dark:bg-mobile-dark lg:bg-desktop-light dark:lg:bg-desktop-dark bg-cover h-48 lg:h-96 flex flex-wrap justify-center text-white transition-all duration-500'>
       <div className='flex w-screen lg:w-2/4 justify-between lg:mt-20 items-center'>
         <h1 className='text-4xl font-bold'>T O D O</h1>
 
@@ -15,11 +15,11 @@ export function Banner() {
       </div>
 
       <div className='w-full flex justify-center items-start text-black dark:text-gray-100 transition-all duration-500'>
-        <div className='flex w-screen items-center lg:w-2/4 p-5 shadow-2xl bg-gray-100 dark:bg-slate-800 transition-all duration-500'>
+        <div className='flex w-screen items-center lg:w-2/4 p-5 mt-3 lg:mt-0 shadow-2xl bg-gray-100 dark:bg-slate-800 transition-all duration-500 rounded-xl lg:rounded-none'>
           <label className='flex items-center'>
             <input
               id='checked-checkbox'
-              className='appearance-none text-transparent border-gray-300 border-2 w-8 h-8 rounded-full checked:bg-gradient-to-tl from-fuchsia-500 to-cyan-300 checked:border-0 checked:text-white'
+              className='appearance-none text-transparent border-gray-300 border-[1px] w-5 h-5 rounded-full checked:bg-gradient-to-tl from-fuchsia-500 to-cyan-300 checked:border-0 checked:text-white'
               type='checkbox'
               name=''
               disabled
