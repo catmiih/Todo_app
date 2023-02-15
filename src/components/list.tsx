@@ -2,26 +2,43 @@ import { useState } from "react";
 import { addTask } from "../lib/functions.js";
 
 interface listProps {
-    list?: Array<string>
+    list?: Array<{ name: string; checked: boolean }>;
 }
 
 export function List({ list }: listProps) {
+    const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
 
-    let countItems = 0;
+    const filteredList = list?.filter((item) => {
+        if (filter === "all") {
+            return true;
+        } else if (filter === "active") {
+            return !item.checked;
+        } else if (filter === "completed") {
+            return item.checked;
+        }
+        return false;
+    });
+    
 
+    const countItems = filteredList?.filter((item) => !item.checked).length ?? 0;
+    console.log(filteredList)
+    
     return (
         <div className="w-screen px-8 lg:px-0 lg:w-2/4 h-full pb-14 rounded-t-xl lg:rounded-none">
             <ul id="taskList">
-                {list?.length ?? 0 > 1 ?
-                    list?.map((item, i) => {
-                        countItems++;
-                        return addTask(item, i);
+                {(filteredList?.length ?? 0) > 1 ? (
+                    filteredList?.map((item, i) => {
+                        return addTask(item.name, i);
                     })
-                    :
-                    <div className={"flex w-full h-28 p-8 px-5 items-start justify-center shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-[1px] bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500 font-light"} >
+                ) : (
+                    <div
+                        className={
+                            "flex rounded-t-xl lg:rounded-none w-full h-28 p-8 px-5 items-start justify-center shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-[1px] bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500 font-light"
+                        }
+                    >
                         <p>None task to view</p>
                     </div>
-                }
+                )}
             </ul>
 
             <div className="flex w-full rounded-b-xl lg:rounded-none py-4 items-center justify-between shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-[1px] bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500">
@@ -30,20 +47,24 @@ export function List({ list }: listProps) {
                         <p className="opacity-40">{countItems} items left</p>
 
                         <div className="justify-between hidden lg:flex">
-
-                            <button>
-                                <p className="opacity-40 hover:opacity-80 mx-3">All</p>
+                            <button onClick={() => setFilter("all")}>
+                                <p className={`${filter === "all" ? "font-bold" : "opacity-40"} hover:opacity-80 mx-2`}>All</p>
                             </button>
-
-                            <button>
-                                <p className="opacity-40 hover:opacity-80 mx-3">Active</p>
+                            <button onClick={() => setFilter("active")}>
+                                <p className={`${filter === "active" ? "font-bold" : "opacity-40"} hover:opacity-80 mx-2`}>Active</p>
                             </button>
-                            <button>
-                                <p className="opacity-40 hover:opacity-80 mx-3">Completed</p>
+                            <button onClick={() => setFilter("completed")}>
+                                <p className={`${filter === "completed" ? "font-bold" : "opacity-40"} hover:opacity-80 mx-2`}>Completed</p>
                             </button>
                         </div>
 
-                        <button className="opacity-40 hover:opacity-80">
+                        <button
+                            className="opacity-40 hover:opacity-80"
+                            onClick={() => {
+                                const newList = list?.filter((item) => !item.checked);
+                                console.log(newList);
+                            }}
+                        >
                             <p>Clear Completed</p>
                         </button>
                     </div>

@@ -1,12 +1,16 @@
 import { useState } from "react";
-
 import { Banner } from "../components/banner";
 import { List } from "../components/list";
 
-export function Home() {
+interface Task {
+  name: string;
+  checked: boolean;
+}
+
+export function Home({name, checked}: Task) {
 
   const [task, setTask] = useState("");
-  const [list, setList] = useState<string[]>([]);
+  const [list, setList] = useState<Task[]>([]);
 
   const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTask(e.target.value);
@@ -15,15 +19,14 @@ export function Home() {
   const handleTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (task.trim() !== "") {
-      setList([...list, task.trim()]);
+      setList([...list, { name: task.trim(), checked: false }]);
       setTask("");
     }
   };
 
   return (
     <div className="overflow-hidden">
-      <Banner onTaskChange={handleTaskChange} onTaskSubmit={handleTaskSubmit}/>
-
+      <Banner task={name} onTaskChange={handleTaskChange} onTaskSubmit={handleTaskSubmit}/>
       <div className="flex w-full justify-center lg:mt-[-4rem] mt-[-1rem]">
         <List list={list}/>
       </div>

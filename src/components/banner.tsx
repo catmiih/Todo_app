@@ -2,24 +2,25 @@ import { BsFillSunFill } from 'react-icons/bs';
 import { BsFillMoonFill } from 'react-icons/bs';
 import React, { useState } from "react";
 
-type BannerProps = {
+interface Props {
+  task: string;
   onTaskChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onTaskSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-};
+}
 
-export function Banner({ onTaskChange, onTaskSubmit }: BannerProps) {
+export function Banner({ onTaskChange, onTaskSubmit, task }: Props) {
 
-  const [task, setTask] = useState('');
+  const [inputTask, setInputTask] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTask(e.target.value);
+    setInputTask(e.target.value);
     onTaskChange(e);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onTaskSubmit(e);
-    setTask('');
+    setInputTask('');
   };
 
   return (
@@ -47,9 +48,9 @@ export function Banner({ onTaskChange, onTaskSubmit }: BannerProps) {
 
           <form onSubmit={handleSubmit}>
             <input
-              className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-full mx-3'
+              className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-[1rem] lg:w-[37rem] mx-3'
               type='text'
-              value={task}
+              value={inputTask}
               onChange={handleInputChange}
               placeholder="Nova tarefa"
             />
