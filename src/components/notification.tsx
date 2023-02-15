@@ -9,7 +9,7 @@ interface notifyProps {
 export function Notification(props : notifyProps) {
 
   return (
-    <div className={props.class+"flex w-full p-5 items-center justify-between shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-[1px] bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500"} >
+    <div className={props.class+"flex w-full py-4 px-5 items-center justify-between shadow-2xl border-gray-600/10 dark:border-gray-100/10 border-[1px] bg-gray-100 dark:bg-slate-800 dark:text-zinc-100 transition-all duration-500"} >
       <label className="flex items-center justify-between w-full cursor-pointer group">
         <div className="flex items-center">
           <input
@@ -22,8 +22,8 @@ export function Notification(props : notifyProps) {
           <p className="peer-checked:line-through peer-checked:opacity-25 mx-4">{props.name}</p>
         </div>
 
-        <button className="opacity-0 group-hover:opacity-100 transition-all duration-500 text-white">
-          <CgClose className="text-sm mx-5 hover:scale-105 hover:duration-300 ease-in-out duration-300" />
+        <button className="lg:opacity-0 opacity-50 lg:group-hover:opacity-100 transition-all duration-500 text-white">
+          <CgClose className="text-sm lg:mx-5 hover:scale-105 hover:duration-300 ease-in-out duration-300" />
         </button>
       </label>
     </div>

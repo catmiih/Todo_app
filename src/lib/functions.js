@@ -4,9 +4,9 @@ export function addTask(nameTask, index) {
   return (
     <li key={index} id={index}>
       {
-        index === 0 ? <Notification name={nameTask} class={"rounded-xl"} />
+        index === 0 ? <Notification name={nameTask} class={"rounded-t-xl lg:rounded-none "} />
          : 
-         <Notification name={nameTask} class={"rounded-xl"} />
+         <Notification name={nameTask} />
       }
     </li>
   );
