@@ -1,9 +1,12 @@
 import { MdCheck } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
+import { deleteTask } from "../lib/functions";
 
 interface notifyProps {
+  id: string
   name: string
   class:string
+  completed:boolean
 }
 
 export function Notification(props : notifyProps) {
@@ -22,7 +25,7 @@ export function Notification(props : notifyProps) {
           <p className="peer-checked:line-through peer-checked:opacity-25 mx-4">{props.name}</p>
         </div>
 
-        <button className="lg:opacity-0 opacity-50 lg:group-hover:opacity-100 transition-all duration-500 text-white">
+        <button className="lg:opacity-0 opacity-50 lg:group-hover:opacity-100 transition-all duration-500 text-white" onClick={() => deleteTask(props.id)}>
           <CgClose className="text-sm lg:mx-5 hover:scale-105 hover:duration-300 ease-in-out duration-300" />
         </button>
       </label>

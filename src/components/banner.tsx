@@ -1,7 +1,26 @@
 import { BsFillSunFill } from 'react-icons/bs';
 import { BsFillMoonFill } from 'react-icons/bs';
+import React, { useState } from "react";
 
-export function Banner() {
+type BannerProps = {
+  onTaskChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onTaskSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+
+export function Banner({ onTaskChange, onTaskSubmit }: BannerProps) {
+
+  const [task, setTask] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTask(e.target.value);
+    onTaskChange(e);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onTaskSubmit(e);
+    setTask('');
+  };
 
   return (
     <div className='w-screen p-8 lg:p-0 bg-mobile-light dark:bg-mobile-dark lg:bg-desktop-light dark:lg:bg-desktop-dark bg-cover h-48 lg:h-96 flex flex-wrap justify-center text-white transition-all duration-500'>
@@ -26,13 +45,16 @@ export function Banner() {
             />
           </label>
 
-          <input
-            className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-full mx-3'
-            type='text'
-            name=''
-            id=''
-            placeholder='Varrer a casa'
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-full mx-3'
+              type='text'
+              value={task}
+              onChange={handleInputChange}
+              placeholder="Nova tarefa"
+            />
+          </form>
+
         </div>
       </div>
     </div>
