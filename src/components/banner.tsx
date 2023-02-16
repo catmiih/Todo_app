@@ -48,7 +48,7 @@ export function Banner({ onTaskChange, onTaskSubmit, task }: Props) {
 
           <form onSubmit={handleSubmit}>
             <input
-              className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-[1rem] lg:w-[37rem] mx-3'
+              className='bg-transparent focus:ring-0 h-full focus:border-0 shadow-transparent outline-0 w-full lg:w-[37rem] mx-3'
               type='text'
               value={inputTask}
               onChange={handleInputChange}

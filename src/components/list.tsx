@@ -1,23 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addTask } from "../lib/functions.js";
 
+export interface Task {
+    name: string;
+    checked: boolean;
+}
+
 interface listProps {
-    list?: Array<{ name: string; checked: boolean }>;
+    list?: Task[];
 }
 
 export function List({ list }: listProps) {
     const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+    const [filteredList, setFilteredList] = useState<Task[]>([]);
 
-    const filteredList = list?.filter((item) => {
-        if (filter === "all") {
-            return true;
-        } else if (filter === "active") {
-            return !item.checked;
-        } else if (filter === "completed") {
-            return item.checked;
+    useEffect(() => {
+        console.log(list)
+        if (list) {
+            setFilteredList(
+                list.filter((item) => {
+                    if (filter === "all") {
+                        return true;
+                    } else if (filter === "active") {
+                        return !item.checked;
+                    } else if (filter === "completed") {
+                        return item.checked;
+                    }
+                    return false;
+                })
+            );
+        } else {
+            setFilteredList([]);
         }
-        return false;
-    });
+    }, [list, filter]);
 
     function clearCompletedTasks(currentList: { name: string; checked: boolean }[]): { name: string; checked: boolean }[] {
         return currentList.filter((item) => !item.checked);
