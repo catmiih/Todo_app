@@ -18,15 +18,17 @@ export function List({ list }: listProps) {
         }
         return false;
     });
-    
+
+    function clearCompletedTasks(currentList: { name: string; checked: boolean }[]): { name: string; checked: boolean }[] {
+        return currentList.filter((item) => !item.checked);
+    }
 
     const countItems = filteredList?.filter((item) => !item.checked).length ?? 0;
-    console.log(filteredList)
-    
+
     return (
         <div className="w-screen px-8 lg:px-0 lg:w-2/4 h-full pb-14 rounded-t-xl lg:rounded-none">
             <ul id="taskList">
-                {(filteredList?.length ?? 0) > 1 ? (
+                {filteredList?.length ?? 0 > 1 ? (
                     filteredList?.map((item, i) => {
                         return addTask(item.name, i);
                     })
@@ -61,7 +63,7 @@ export function List({ list }: listProps) {
                         <button
                             className="opacity-40 hover:opacity-80"
                             onClick={() => {
-                                const newList = list?.filter((item) => !item.checked);
+                                const newList = clearCompletedTasks(list ?? []);
                                 console.log(newList);
                             }}
                         >

@@ -1,6 +1,6 @@
 import { Notification } from "../components/notification";
 
-export function addTask(nameTask, index) {
+export function addTask(nameTask, index, checked) {
   return (
     <li key={index} id={index}>
       {
